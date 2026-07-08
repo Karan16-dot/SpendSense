@@ -10,4 +10,5 @@ public class SpendsenseApiApplication {
         SpringApplication.run(SpendsenseApiApplication.class, args);
     }
 
+
 }

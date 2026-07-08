@@ -1,5 +1,4 @@
-package com.spendsense.user.entity.repository;
-
+package com.spendsense.user.repository;
 
 import com.spendsense.user.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -7,9 +6,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface userRepository extends JpaRepository<User,UUID> {
+public interface UserRepository extends JpaRepository<User, UUID> {
 
     Optional<User> findByEmail(String email);
 
-    boolean exitsByEmail(String email);
+    boolean existsByEmail(String email);
+
 }

@@ -1,5 +1,4 @@
-package com.spendsense.user.entity.service;
-
+package com.spendsense.user.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -7,4 +6,5 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class UserService {
+
 }
