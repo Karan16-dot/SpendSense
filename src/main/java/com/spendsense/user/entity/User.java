@@ -36,4 +36,17 @@ public class User {
     @Builder.Default
     private LocalDateTime createdAt = LocalDateTime.now();
 
+    @Column(nullable = false)
+    @Builder.Default
+    private Boolean enabled = true;
+
+
+    @Column(nullable = false)
+    @Builder.Default
+    private String role = "USER";
+
+    @Column(nullable = false)
+    @Builder.Default
+    private LocalDateTime updatedAt = LocalDateTime.now();
+
 }
