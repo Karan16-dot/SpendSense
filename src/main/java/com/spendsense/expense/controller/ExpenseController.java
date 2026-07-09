@@ -5,11 +5,10 @@ import com.spendsense.expense.dto.response.ExpenseResponse;
 import com.spendsense.expense.service.ExpenseService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/expenses")
@@ -18,22 +17,46 @@ public class ExpenseController {
 
     private final ExpenseService expenseService;
 
+    /**
+     * Create Expense
+     */
     @PostMapping
     public ResponseEntity<ExpenseResponse> createExpense(
             @Valid @RequestBody CreateExpenseRequest request) {
 
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(expenseService.createExpense(request));
+        ExpenseResponse response =
+                expenseService.createExpense(request);
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(response);
     }
 
+    /**
+     * Get Logged-in User Expenses
+     */
     @GetMapping
-    public ResponseEntity<List<ExpenseResponse>> getMyExpenses() {
+    public ResponseEntity<Page<ExpenseResponse>> getExpenses(
+
+            @RequestParam(defaultValue = "0")
+            int page,
+
+            @RequestParam(defaultValue = "10")
+            int size,
+
+            @RequestParam(defaultValue = "transactionDate")
+            String sortBy,
+
+            @RequestParam(defaultValue = "desc")
+            String direction) {
 
         return ResponseEntity.ok(
-                expenseService.getMyExpenses()
+                expenseService.getMyExpenses(
+                        page,
+                        size,
+                        sortBy,
+                        direction
+                )
         );
-
     }
-
-
 }

@@ -10,11 +10,13 @@ import com.spendsense.expense.repository.ExpenseRepository;
 import com.spendsense.user.entity.User;
 import com.spendsense.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -25,7 +27,7 @@ public class ExpenseService {
     private final UserRepository userRepository;
 
     /**
-     * Creates a new expense for the currently authenticated user.
+     * Create Expense
      */
     public ExpenseResponse createExpense(CreateExpenseRequest request) {
 
@@ -52,21 +54,30 @@ public class ExpenseService {
     }
 
     /**
-     * Returns all expenses of the currently authenticated user.
+     * Get Logged-in User Expenses
      */
-    public List<ExpenseResponse> getMyExpenses() {
+    public Page<ExpenseResponse> getMyExpenses(
+            int page,
+            int size,
+            String sortBy,
+            String direction) {
 
         User currentUser = getCurrentUser();
 
-        List<Expense> expenses = expenseRepository.findByUser(currentUser);
+        Sort sort = direction.equalsIgnoreCase("desc")
+                ? Sort.by(sortBy).descending()
+                : Sort.by(sortBy).ascending();
 
-        return expenses.stream()
-                .map(this::mapToResponse)
-                .toList();
+        Pageable pageable = PageRequest.of(page, size, sort);
+
+        Page<Expense> expenses =
+                expenseRepository.findByUser(currentUser, pageable);
+
+        return expenses.map(this::mapToResponse);
     }
 
     /**
-     * Retrieves the currently authenticated user from Spring Security.
+     * Returns currently authenticated user
      */
     private User getCurrentUser() {
 
@@ -81,7 +92,7 @@ public class ExpenseService {
     }
 
     /**
-     * Converts an Expense entity into an ExpenseResponse DTO.
+     * Entity → DTO
      */
     private ExpenseResponse mapToResponse(Expense expense) {
 
