@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/api/expenses")
 @RequiredArgsConstructor
@@ -27,13 +29,12 @@ public class ExpenseController {
         ExpenseResponse response =
                 expenseService.createExpense(request);
 
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
+        return ResponseEntity.status(HttpStatus.CREATED)
                 .body(response);
     }
 
     /**
-     * Get Logged-in User Expenses
+     * Get Logged-in User Expenses (Paginated)
      */
     @GetMapping
     public ResponseEntity<Page<ExpenseResponse>> getExpenses(
@@ -57,6 +58,18 @@ public class ExpenseController {
                         sortBy,
                         direction
                 )
+        );
+    }
+
+    /**
+     * Get Expense By Id
+     */
+    @GetMapping("/{expenseId}")
+    public ResponseEntity<ExpenseResponse> getExpenseById(
+            @PathVariable UUID expenseId) {
+
+        return ResponseEntity.ok(
+                expenseService.getExpenseById(expenseId)
         );
     }
 }

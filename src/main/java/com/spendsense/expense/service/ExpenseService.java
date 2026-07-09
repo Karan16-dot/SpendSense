@@ -18,6 +18,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
 public class ExpenseService {
@@ -54,7 +56,7 @@ public class ExpenseService {
     }
 
     /**
-     * Get Logged-in User Expenses
+     * Get Paginated Expenses
      */
     public Page<ExpenseResponse> getMyExpenses(
             int page,
@@ -77,7 +79,22 @@ public class ExpenseService {
     }
 
     /**
-     * Returns currently authenticated user
+     * Get Expense By Id
+     */
+    public ExpenseResponse getExpenseById(UUID expenseId) {
+
+        User currentUser = getCurrentUser();
+
+        Expense expense = expenseRepository
+                .findByIdAndUser(expenseId, currentUser)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Expense not found"));
+
+        return mapToResponse(expense);
+    }
+
+    /**
+     * Get Current Logged-in User
      */
     private User getCurrentUser() {
 
@@ -92,7 +109,7 @@ public class ExpenseService {
     }
 
     /**
-     * Entity → DTO
+     * Convert Entity to Response DTO
      */
     private ExpenseResponse mapToResponse(Expense expense) {
 
