@@ -2,6 +2,7 @@ package com.spendsense.expense.service;
 
 import com.spendsense.common.exception.ResourceNotFoundException;
 import com.spendsense.expense.dto.request.CreateExpenseRequest;
+import com.spendsense.expense.dto.request.UpdateExpenseRequest;
 import com.spendsense.expense.dto.response.ExpenseResponse;
 import com.spendsense.expense.entity.Category;
 import com.spendsense.expense.entity.Expense;
@@ -79,7 +80,7 @@ public class ExpenseService {
     }
 
     /**
-     * Get Expense By Id
+     * Get Expense By ID
      */
     public ExpenseResponse getExpenseById(UUID expenseId) {
 
@@ -91,6 +92,38 @@ public class ExpenseService {
                         new ResourceNotFoundException("Expense not found"));
 
         return mapToResponse(expense);
+    }
+
+    /**
+     * Update Expense
+     */
+    public ExpenseResponse updateExpense(
+            UUID expenseId,
+            UpdateExpenseRequest request) {
+
+        User currentUser = getCurrentUser();
+
+        Expense expense = expenseRepository
+                .findByIdAndUser(expenseId, currentUser)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Expense not found"));
+
+        Category category = categoryRepository
+                .findById(request.getCategoryId())
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Category not found"));
+
+        expense.setTitle(request.getTitle());
+        expense.setAmount(request.getAmount());
+        expense.setMerchant(request.getMerchant());
+        expense.setNotes(request.getNotes());
+        expense.setTransactionDate(request.getTransactionDate());
+        expense.setPaymentMethod(request.getPaymentMethod());
+        expense.setCategory(category);
+
+        Expense updatedExpense = expenseRepository.save(expense);
+
+        return mapToResponse(updatedExpense);
     }
 
     /**

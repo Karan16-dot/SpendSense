@@ -1,18 +1,21 @@
-package com.spendsense.expense.repository;
+package com.spendsense.user.repository;
 
-import com.spendsense.expense.entity.Expense;
 import com.spendsense.user.entity.User;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 import java.util.UUID;
 
-public interface ExpenseRepository extends JpaRepository<Expense, UUID> {
+public interface UserRepository extends JpaRepository<User, UUID> {
 
-    Page<Expense> findByUser(User user, Pageable pageable);
+    /**
+     * Find user by email
+     */
+    Optional<User> findByEmail(String email);
 
-    Optional<Expense> findByIdAndUser(UUID id, User user);
+    /**
+     * Check if email already exists
+     */
+    boolean existsByEmail(String email);
 
 }

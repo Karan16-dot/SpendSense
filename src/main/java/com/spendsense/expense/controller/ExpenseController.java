@@ -1,6 +1,7 @@
 package com.spendsense.expense.controller;
 
 import com.spendsense.expense.dto.request.CreateExpenseRequest;
+import com.spendsense.expense.dto.request.UpdateExpenseRequest;
 import com.spendsense.expense.dto.response.ExpenseResponse;
 import com.spendsense.expense.service.ExpenseService;
 import jakarta.validation.Valid;
@@ -26,15 +27,14 @@ public class ExpenseController {
     public ResponseEntity<ExpenseResponse> createExpense(
             @Valid @RequestBody CreateExpenseRequest request) {
 
-        ExpenseResponse response =
-                expenseService.createExpense(request);
+        ExpenseResponse response = expenseService.createExpense(request);
 
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(response);
     }
 
     /**
-     * Get Logged-in User Expenses (Paginated)
+     * Get Paginated Expenses
      */
     @GetMapping
     public ResponseEntity<Page<ExpenseResponse>> getExpenses(
@@ -62,7 +62,7 @@ public class ExpenseController {
     }
 
     /**
-     * Get Expense By Id
+     * Get Expense By ID
      */
     @GetMapping("/{expenseId}")
     public ResponseEntity<ExpenseResponse> getExpenseById(
@@ -70,6 +70,19 @@ public class ExpenseController {
 
         return ResponseEntity.ok(
                 expenseService.getExpenseById(expenseId)
+        );
+    }
+
+    /**
+     * Update Expense
+     */
+    @PutMapping("/{expenseId}")
+    public ResponseEntity<ExpenseResponse> updateExpense(
+            @PathVariable UUID expenseId,
+            @Valid @RequestBody UpdateExpenseRequest request) {
+
+        return ResponseEntity.ok(
+                expenseService.updateExpense(expenseId, request)
         );
     }
 }
