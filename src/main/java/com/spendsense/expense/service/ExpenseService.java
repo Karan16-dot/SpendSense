@@ -2,23 +2,24 @@ package com.spendsense.expense.service;
 
 import com.spendsense.common.exception.ResourceNotFoundException;
 import com.spendsense.expense.dto.request.CreateExpenseRequest;
+import com.spendsense.expense.dto.request.ExpenseFilterRequest;
 import com.spendsense.expense.dto.request.UpdateExpenseRequest;
 import com.spendsense.expense.dto.response.ExpenseResponse;
 import com.spendsense.expense.entity.Category;
 import com.spendsense.expense.entity.Expense;
 import com.spendsense.expense.repository.CategoryRepository;
 import com.spendsense.expense.repository.ExpenseRepository;
+import com.spendsense.expense.specification.ExpenseSpecification;
 import com.spendsense.user.entity.User;
 import com.spendsense.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Service
@@ -29,16 +30,14 @@ public class ExpenseService {
     private final CategoryRepository categoryRepository;
     private final UserRepository userRepository;
 
-    /**
-     * Create Expense
-     */
+    // ---------------- CREATE ----------------
+
     public ExpenseResponse createExpense(CreateExpenseRequest request) {
 
         User currentUser = getCurrentUser();
 
         Category category = categoryRepository.findById(request.getCategoryId())
-                .orElseThrow(() ->
-                        new ResourceNotFoundException("Category not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Category not found"));
 
         Expense expense = Expense.builder()
                 .title(request.getTitle())
@@ -47,18 +46,15 @@ public class ExpenseService {
                 .notes(request.getNotes())
                 .transactionDate(request.getTransactionDate())
                 .paymentMethod(request.getPaymentMethod())
-                .user(currentUser)
                 .category(category)
+                .user(currentUser)
                 .build();
 
-        Expense savedExpense = expenseRepository.save(expense);
-
-        return mapToResponse(savedExpense);
+        return mapToResponse(expenseRepository.save(expense));
     }
 
-    /**
-     * Get Paginated Expenses
-     */
+    // ---------------- GET ALL ----------------
+
     public Page<ExpenseResponse> getMyExpenses(
             int page,
             int size,
@@ -73,45 +69,37 @@ public class ExpenseService {
 
         Pageable pageable = PageRequest.of(page, size, sort);
 
-        Page<Expense> expenses =
-                expenseRepository.findByUser(currentUser, pageable);
-
-        return expenses.map(this::mapToResponse);
+        return expenseRepository
+                .findByUserAndDeletedFalse(currentUser, pageable)
+                .map(this::mapToResponse);
     }
 
-    /**
-     * Get Expense By ID
-     */
+    // ---------------- GET BY ID ----------------
+
     public ExpenseResponse getExpenseById(UUID expenseId) {
 
         User currentUser = getCurrentUser();
 
         Expense expense = expenseRepository
-                .findByIdAndUser(expenseId, currentUser)
-                .orElseThrow(() ->
-                        new ResourceNotFoundException("Expense not found"));
+                .findByIdAndUserAndDeletedFalse(expenseId, currentUser)
+                .orElseThrow(() -> new ResourceNotFoundException("Expense not found"));
 
         return mapToResponse(expense);
     }
 
-    /**
-     * Update Expense
-     */
-    public ExpenseResponse updateExpense(
-            UUID expenseId,
-            UpdateExpenseRequest request) {
+    // ---------------- UPDATE ----------------
+
+    public ExpenseResponse updateExpense(UUID expenseId,
+                                         UpdateExpenseRequest request) {
 
         User currentUser = getCurrentUser();
 
         Expense expense = expenseRepository
-                .findByIdAndUser(expenseId, currentUser)
-                .orElseThrow(() ->
-                        new ResourceNotFoundException("Expense not found"));
+                .findByIdAndUserAndDeletedFalse(expenseId, currentUser)
+                .orElseThrow(() -> new ResourceNotFoundException("Expense not found"));
 
-        Category category = categoryRepository
-                .findById(request.getCategoryId())
-                .orElseThrow(() ->
-                        new ResourceNotFoundException("Category not found"));
+        Category category = categoryRepository.findById(request.getCategoryId())
+                .orElseThrow(() -> new ResourceNotFoundException("Category not found"));
 
         expense.setTitle(request.getTitle());
         expense.setAmount(request.getAmount());
@@ -121,29 +109,64 @@ public class ExpenseService {
         expense.setPaymentMethod(request.getPaymentMethod());
         expense.setCategory(category);
 
-        Expense updatedExpense = expenseRepository.save(expense);
-
-        return mapToResponse(updatedExpense);
+        return mapToResponse(expenseRepository.save(expense));
     }
 
-    /**
-     * Get Current Logged-in User
-     */
+    // ---------------- DELETE ----------------
+
+    public void deleteExpense(UUID expenseId) {
+
+        User currentUser = getCurrentUser();
+
+        Expense expense = expenseRepository
+                .findByIdAndUserAndDeletedFalse(expenseId, currentUser)
+                .orElseThrow(() -> new ResourceNotFoundException("Expense not found"));
+
+        expense.setDeleted(true);
+        expense.setDeletedAt(LocalDateTime.now());
+
+        expenseRepository.save(expense);
+    }
+
+    // ---------------- SEARCH ----------------
+
+    public Page<ExpenseResponse> searchExpenses(
+            ExpenseFilterRequest filter,
+            int page,
+            int size,
+            String sortBy,
+            String direction) {
+
+        User currentUser = getCurrentUser();
+
+        Sort sort = direction.equalsIgnoreCase("desc")
+                ? Sort.by(sortBy).descending()
+                : Sort.by(sortBy).ascending();
+
+        Pageable pageable = PageRequest.of(page, size, sort);
+
+        Specification<Expense> specification =
+                ExpenseSpecification.filterExpenses(filter, currentUser);
+
+        return expenseRepository
+                .findAll(specification, pageable)
+                .map(this::mapToResponse);
+    }
+
+    // ---------------- CURRENT USER ----------------
+
     private User getCurrentUser() {
 
         Authentication authentication =
                 SecurityContextHolder.getContext().getAuthentication();
 
-        String email = authentication.getName();
-
-        return userRepository.findByEmail(email)
+        return userRepository.findByEmail(authentication.getName())
                 .orElseThrow(() ->
                         new ResourceNotFoundException("User not found"));
     }
 
-    /**
-     * Convert Entity to Response DTO
-     */
+    // ---------------- MAPPER ----------------
+
     private ExpenseResponse mapToResponse(Expense expense) {
 
         return ExpenseResponse.builder()

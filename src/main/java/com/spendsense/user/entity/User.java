@@ -1,9 +1,12 @@
 package com.spendsense.user.entity;
 
+import com.spendsense.category.entity.Category;
 import com.spendsense.common.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -27,4 +30,8 @@ public class User extends BaseEntity {
 
     @Column(nullable = false)
     private String password;
+
+    @Builder.Default
+    @OneToMany(mappedBy = "user")
+    private List<Category> categories = new ArrayList<>();
 }

@@ -1,6 +1,7 @@
 package com.spendsense.expense.controller;
 
 import com.spendsense.expense.dto.request.CreateExpenseRequest;
+import com.spendsense.expense.dto.request.ExpenseFilterRequest;
 import com.spendsense.expense.dto.request.UpdateExpenseRequest;
 import com.spendsense.expense.dto.response.ExpenseResponse;
 import com.spendsense.expense.service.ExpenseService;
@@ -20,50 +21,27 @@ public class ExpenseController {
 
     private final ExpenseService expenseService;
 
-    /**
-     * Create Expense
-     */
     @PostMapping
     public ResponseEntity<ExpenseResponse> createExpense(
             @Valid @RequestBody CreateExpenseRequest request) {
 
-        ExpenseResponse response = expenseService.createExpense(request);
-
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(response);
+                .body(expenseService.createExpense(request));
     }
 
-    /**
-     * Get Paginated Expenses
-     */
     @GetMapping
     public ResponseEntity<Page<ExpenseResponse>> getExpenses(
 
-            @RequestParam(defaultValue = "0")
-            int page,
-
-            @RequestParam(defaultValue = "10")
-            int size,
-
-            @RequestParam(defaultValue = "transactionDate")
-            String sortBy,
-
-            @RequestParam(defaultValue = "desc")
-            String direction) {
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "transactionDate") String sortBy,
+            @RequestParam(defaultValue = "desc") String direction) {
 
         return ResponseEntity.ok(
-                expenseService.getMyExpenses(
-                        page,
-                        size,
-                        sortBy,
-                        direction
-                )
+                expenseService.getMyExpenses(page, size, sortBy, direction)
         );
     }
 
-    /**
-     * Get Expense By ID
-     */
     @GetMapping("/{expenseId}")
     public ResponseEntity<ExpenseResponse> getExpenseById(
             @PathVariable UUID expenseId) {
@@ -73,9 +51,6 @@ public class ExpenseController {
         );
     }
 
-    /**
-     * Update Expense
-     */
     @PutMapping("/{expenseId}")
     public ResponseEntity<ExpenseResponse> updateExpense(
             @PathVariable UUID expenseId,
@@ -83,6 +58,39 @@ public class ExpenseController {
 
         return ResponseEntity.ok(
                 expenseService.updateExpense(expenseId, request)
+        );
+    }
+
+    @DeleteMapping("/{expenseId}")
+    public ResponseEntity<Void> deleteExpense(
+            @PathVariable UUID expenseId) {
+
+        expenseService.deleteExpense(expenseId);
+
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/filter")
+    public ResponseEntity<Page<ExpenseResponse>> filterExpenses(
+
+            ExpenseFilterRequest request,
+
+            @RequestParam(defaultValue = "0") int page,
+
+            @RequestParam(defaultValue = "10") int size,
+
+            @RequestParam(defaultValue = "transactionDate") String sortBy,
+
+            @RequestParam(defaultValue = "desc") String direction) {
+
+        return ResponseEntity.ok(
+                expenseService.searchExpenses(
+                        request,
+                        page,
+                        size,
+                        sortBy,
+                        direction
+                )
         );
     }
 }

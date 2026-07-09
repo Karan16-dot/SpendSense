@@ -20,8 +20,7 @@ CREATE TABLE categories
 
     CONSTRAINT fk_category_user
         FOREIGN KEY (user_id)
-            REFERENCES users(id)
-            ON DELETE CASCADE,
+            REFERENCES users(id),
 
     CONSTRAINT uk_category_user_name
         UNIQUE (user_id, name)

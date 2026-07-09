@@ -1,0 +1,4 @@
+package com.spendsense.category.dto;
+
+public class CategoryRequest {
+}
