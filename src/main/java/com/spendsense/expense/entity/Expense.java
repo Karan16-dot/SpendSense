@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 
-import com.spendsense.category.entity.Category
+import com.spendsense.category.entity.Category;
 
 @Entity
 @Table(name = "expenses")

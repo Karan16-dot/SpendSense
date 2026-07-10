@@ -1,37 +1,28 @@
 package com.spendsense.category.entity;
 
-import com.spendsense.common.entity.BaseEntity;
 import com.spendsense.expense.entity.Expense;
-import com.spendsense.user.entity.User;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(
-        name = "categories",
-        uniqueConstraints = {
-                @UniqueConstraint(
-                        name = "uk_category_user_name",
-                        columnNames = {"user_id", "name"}
-                )
-        }
-)
+@Table(name = "categories")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Category extends BaseEntity {
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, unique = true, length = 100)
     private String name;
 
     @Column(nullable = false, length = 100)
@@ -40,19 +31,17 @@ public class Category extends BaseEntity {
     @Column(nullable = false, length = 20)
     private String color;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 20)
-    private CategoryType type;
-
-    @Builder.Default
     @Column(nullable = false)
+    @Builder.Default
     private Boolean isDefault = false;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
-
+    @Column(nullable = false)
     @Builder.Default
+    private LocalDateTime createdAt = LocalDateTime.now();
+
+    private LocalDateTime updatedAt;
+
     @OneToMany(mappedBy = "category")
+    @Builder.Default
     private List<Expense> expenses = new ArrayList<>();
 }

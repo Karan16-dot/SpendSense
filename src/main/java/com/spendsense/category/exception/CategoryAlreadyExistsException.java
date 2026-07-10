@@ -1,4 +1,8 @@
 package com.spendsense.category.exception;
 
-public class CategoryAlreadyExistsException {
+public class CategoryAlreadyExistsException extends RuntimeException {
+
+    public CategoryAlreadyExistsException(String message) {
+        super(message);
+    }
 }
