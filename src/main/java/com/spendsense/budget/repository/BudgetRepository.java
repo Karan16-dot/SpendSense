@@ -5,15 +5,22 @@ import com.spendsense.category.entity.Category;
 import com.spendsense.user.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface BudgetRepository extends JpaRepository<Budget, UUID> {
 
-    List<Budget> findByUser(User user);
+    Optional<Budget> findByIdAndUser(UUID id, User user);
 
-    List<Budget> findByCategory(Category category);
+    List<Budget> findByUserOrderByStartDateDesc(User user);
 
-    List<Budget> findByUserAndCategory(User user, Category category);
+    boolean existsByUserAndCategoryAndStartDateAndEndDate(
+            User user,
+            Category category,
+            LocalDate startDate,
+            LocalDate endDate
+    );
 
 }

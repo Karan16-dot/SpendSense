@@ -1,12 +1,8 @@
 package com.spendsense.budget.dto.response;
 
+import com.spendsense.budget.entity.BudgetStatus;
 import lombok.Builder;
 import lombok.Data;
-
-
-import com.spendsense.budget.entity.BudgetStatus;
-
-private BudgetStatus status;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -28,7 +24,7 @@ public class BudgetResponse {
 
     private Double usagePercentage;
 
-    private String status;
+    private BudgetStatus status;
 
     private LocalDate startDate;
 
