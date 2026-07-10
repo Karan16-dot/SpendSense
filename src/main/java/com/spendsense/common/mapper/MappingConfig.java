@@ -1,11 +1,10 @@
 package com.spendsense.common.mapper;
 
-import org.mapstruct.MapperConfig;
 import org.mapstruct.ReportingPolicy;
 
-@MapperConfig(
+@org.mapstruct.MapperConfig(
         componentModel = "spring",
         unmappedTargetPolicy = ReportingPolicy.IGNORE
 )
-public interface MapperConfig {
+public interface MappingConfig {
 }

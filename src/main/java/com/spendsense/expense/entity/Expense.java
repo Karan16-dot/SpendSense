@@ -8,6 +8,7 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 import com.spendsense.category.entity.Category;
@@ -51,4 +52,10 @@ public class Expense extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
+
+    @Builder.Default
+    @Column(nullable = false)
+    private Boolean deleted = false;
+
+    private LocalDateTime deletedAt;
 }

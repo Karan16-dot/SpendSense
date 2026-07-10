@@ -5,6 +5,8 @@ import com.spendsense.common.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import com.spendsense.user.enums.Role;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -30,6 +32,15 @@ public class User extends BaseEntity {
 
     @Column(nullable = false)
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    @Builder.Default
+    private Role role = Role.ROLE_USER;
+
+    @Column(nullable = false)
+    @Builder.Default
+    private Boolean enabled = true;
 
     @Builder.Default
     @OneToMany(mappedBy = "user")

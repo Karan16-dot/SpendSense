@@ -12,14 +12,14 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CategoryRequest {
+public class UpdateCategoryRequest {
 
     @NotBlank(message = "Category name is required")
-    @Size(max = 100, message = "Category name cannot exceed 100 characters")
+    @Size(max = 100)
     private String name;
 
     @NotBlank(message = "Icon is required")
-    @Size(max = 100, message = "Icon cannot exceed 100 characters")
+    @Size(max = 100)
     private String icon;
 
     @NotBlank(message = "Color is required")

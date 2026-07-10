@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -29,44 +30,52 @@ public class SecurityConfig {
 
         http
 
-                // Disable CSRF for REST APIs
-                .csrf(csrf -> csrf.disable())
+                // Disable CSRF (REST API)
+                .csrf(AbstractHttpConfigurer::disable)
 
-                // JWT is stateless
+                // Disable HTTP Basic Authentication
+                .httpBasic(AbstractHttpConfigurer::disable)
+
+                // Stateless Session
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(
                                 SessionCreationPolicy.STATELESS))
 
-                // Configure endpoint authorization
+                // Authorization Rules
                 .authorizeHttpRequests(auth -> auth
 
-                        // Public endpoints
-                        .requestMatchers(
-                                "/api/auth/**"
-                        ).permitAll()
+                        // Authentication APIs
+                        .requestMatchers("/api/auth/**")
+                        .permitAll()
 
-                        // Swagger (future)
+                        // Swagger UI
                         .requestMatchers(
                                 "/swagger-ui/**",
-                                "/v3/api-docs/**"
-                        ).permitAll()
+                                "/swagger-ui.html",
+                                "/v3/api-docs/**",
+                                "/v3/api-docs",
+                                "/swagger-resources/**",
+                                "/webjars/**"
+                        )
+                        .permitAll()
 
-                        // Example Admin endpoint
+                        // Health Check (future)
+                        .requestMatchers("/actuator/health")
+                        .permitAll()
+
+                        // Admin APIs
                         .requestMatchers(HttpMethod.GET,
                                 "/api/admin/**")
                         .hasRole("ADMIN")
 
-                        // Everything else requires authentication
+                        // Everything else
                         .anyRequest()
                         .authenticated())
 
-                // Add JWT filter before Spring's authentication filter
+                // JWT Filter
                 .addFilterBefore(
                         jwtAuthenticationFilter,
-                        UsernamePasswordAuthenticationFilter.class)
-
-                // Disable default login page
-                .httpBasic(Customizer.withDefaults());
+                        UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }

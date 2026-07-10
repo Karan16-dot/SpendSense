@@ -1,0 +1,6 @@
+-- ==========================================
+-- SpendSense Flyway Baseline
+-- ==========================================
+-- Existing schema is already present.
+-- Future schema changes will be managed
+-- through Flyway migrations.

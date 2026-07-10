@@ -1,0 +1,602 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< com.spendsense:spendsense-api >--------------------
+[INFO] Building SpendSense API 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.4.1:clean (default-clean) @ spendsense-api ---
+[INFO] Deleting C:\Projects\SpendSense\backend\spendsense-api\target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ spendsense-api ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 4 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.0:compile (default-compile) @ spendsense-api ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 54 source files with javac [debug parameters release 21] to target\classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/service/CategoryService.java:[7,42] cannot access com.spendsense.category.repository.CategoryRepository
+  bad source file: C:\Projects\SpendSense\backend\spendsense-api\src\main\java\com\spendsense\category\repository\CategoryRepository.java
+    file does not contain class com.spendsense.category.repository.CategoryRepository
+    Please remove or make sure it appears in the correct subdirectory of the sourcepath.
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/repository/CategoryRepository.java:[10,8] class CategoryResponse is public, should be declared in a file named CategoryResponse.java
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/user/repository/ExpenseRepository.java:[9,8] interface UserRepository is public, should be declared in a file named UserRepository.java
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/user/repository/UserRepository.java:[9,8] duplicate class: com.spendsense.user.repository.UserRepository
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/common/mapper/MapperConfig.java:[3,1] com.spendsense.common.mapper.MapperConfig is already defined in this compilation unit
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/controller/CategoryController.java:[3,43] package com.spendsense.category.dto.request does not exist
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/controller/CategoryController.java:[4,43] package com.spendsense.category.dto.request does not exist
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/service/CategoryService.java:[3,43] package com.spendsense.category.dto.request does not exist
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/service/CategoryService.java:[4,43] package com.spendsense.category.dto.request does not exist
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/controller/CategoryController.java:[25,33] cannot find symbol
+  symbol:   class CreateCategoryRequest
+  location: class com.spendsense.category.controller.CategoryController
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/controller/CategoryController.java:[48,33] cannot find symbol
+  symbol:   class UpdateCategoryRequest
+  location: class com.spendsense.category.controller.CategoryController
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/service/CategoryService.java:[20,19] cannot find symbol
+  symbol:   class CategoryRepository
+  location: class com.spendsense.category.service.CategoryService
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/service/CategoryService.java:[22,44] cannot find symbol
+  symbol:   class CreateCategoryRequest
+  location: class com.spendsense.category.service.CategoryService
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/service/CategoryService.java:[57,13] cannot find symbol
+  symbol:   class UpdateCategoryRequest
+  location: class com.spendsense.category.service.CategoryService
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/auth/service/AuthenticationService.java:[22,55] cannot find symbol
+  symbol:   method getEmail()
+  location: variable request of type com.spendsense.auth.dto.LoginRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/auth/service/AuthenticationService.java:[27,24] cannot find symbol
+  symbol:   method getPassword()
+  location: variable request of type com.spendsense.auth.dto.LoginRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/auth/service/AuthenticationService.java:[28,21] cannot find symbol
+  symbol:   method getPassword()
+  location: variable user of type com.spendsense.user.entity.User
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/auth/service/AuthenticationService.java:[33,53] cannot find symbol
+  symbol:   method getEmail()
+  location: variable user of type com.spendsense.user.entity.User
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/auth/service/AuthenticationService.java:[35,29] cannot find symbol
+  symbol:   method builder()
+  location: class com.spendsense.auth.dto.LoginResponse
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/service/CategoryService.java:[28,37] cannot find symbol
+  symbol:   method builder()
+  location: class com.spendsense.category.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/service/CategoryService.java:[66,17] cannot find symbol
+  symbol:   method setUpdatedAt(java.time.LocalDateTime)
+  location: variable category of type com.spendsense.category.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/service/CategoryService.java:[77,41] cannot find symbol
+  symbol:   method getIsDefault()
+  location: variable category of type com.spendsense.category.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/service/CategoryService.java:[86,32] cannot find symbol
+  symbol:   method builder()
+  location: class com.spendsense.category.dto.response.CategoryResponse
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/service/CategoryService.java:[87,29] cannot find symbol
+  symbol:   method getId()
+  location: variable category of type com.spendsense.category.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/service/CategoryService.java:[88,31] cannot find symbol
+  symbol:   method getName()
+  location: variable category of type com.spendsense.category.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/service/CategoryService.java:[89,31] cannot find symbol
+  symbol:   method getIcon()
+  location: variable category of type com.spendsense.category.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/service/CategoryService.java:[90,32] cannot find symbol
+  symbol:   method getColor()
+  location: variable category of type com.spendsense.category.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/service/CategoryService.java:[91,36] cannot find symbol
+  symbol:   method getIsDefault()
+  location: variable category of type com.spendsense.category.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/common/exception/GlobalExceptionHandler.java:[21,34] cannot find symbol
+  symbol:   method builder()
+  location: class com.spendsense.common.exception.ApiError
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/common/exception/GlobalExceptionHandler.java:[46,34] cannot find symbol
+  symbol:   method builder()
+  location: class com.spendsense.common.exception.ApiError
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/config/DataInitializer.java:[26,25] cannot find symbol
+  symbol:   method builder()
+  location: class com.spendsense.expense.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/config/DataInitializer.java:[28,25] cannot find symbol
+  symbol:   method builder()
+  location: class com.spendsense.expense.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/config/DataInitializer.java:[30,25] cannot find symbol
+  symbol:   method builder()
+  location: class com.spendsense.expense.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/config/DataInitializer.java:[32,25] cannot find symbol
+  symbol:   method builder()
+  location: class com.spendsense.expense.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/config/DataInitializer.java:[34,25] cannot find symbol
+  symbol:   method builder()
+  location: class com.spendsense.expense.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/config/DataInitializer.java:[36,25] cannot find symbol
+  symbol:   method builder()
+  location: class com.spendsense.expense.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/config/DataInitializer.java:[38,25] cannot find symbol
+  symbol:   method builder()
+  location: class com.spendsense.expense.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/config/DataInitializer.java:[40,25] cannot find symbol
+  symbol:   method builder()
+  location: class com.spendsense.expense.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/config/DataInitializer.java:[42,25] cannot find symbol
+  symbol:   method builder()
+  location: class com.spendsense.expense.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/config/DataInitializer.java:[44,25] cannot find symbol
+  symbol:   method builder()
+  location: class com.spendsense.expense.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[39,64] cannot find symbol
+  symbol:   method getCategoryId()
+  location: variable request of type com.spendsense.expense.dto.request.CreateExpenseRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[42,34] cannot find symbol
+  symbol:   method builder()
+  location: class com.spendsense.expense.entity.Expense
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[43,31] cannot find symbol
+  symbol:   method getTitle()
+  location: variable request of type com.spendsense.expense.dto.request.CreateExpenseRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[44,32] cannot find symbol
+  symbol:   method getAmount()
+  location: variable request of type com.spendsense.expense.dto.request.CreateExpenseRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[45,34] cannot find symbol
+  symbol:   method getMerchant()
+  location: variable request of type com.spendsense.expense.dto.request.CreateExpenseRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[46,31] cannot find symbol
+  symbol:   method getNotes()
+  location: variable request of type com.spendsense.expense.dto.request.CreateExpenseRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[47,41] cannot find symbol
+  symbol:   method getTransactionDate()
+  location: variable request of type com.spendsense.expense.dto.request.CreateExpenseRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[48,39] cannot find symbol
+  symbol:   method getPaymentMethod()
+  location: variable request of type com.spendsense.expense.dto.request.CreateExpenseRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[101,64] cannot find symbol
+  symbol:   method getCategoryId()
+  location: variable request of type com.spendsense.expense.dto.request.UpdateExpenseRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[104,33] cannot find symbol
+  symbol:   method getTitle()
+  location: variable request of type com.spendsense.expense.dto.request.UpdateExpenseRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[105,34] cannot find symbol
+  symbol:   method getAmount()
+  location: variable request of type com.spendsense.expense.dto.request.UpdateExpenseRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[106,36] cannot find symbol
+  symbol:   method getMerchant()
+  location: variable request of type com.spendsense.expense.dto.request.UpdateExpenseRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[107,33] cannot find symbol
+  symbol:   method getNotes()
+  location: variable request of type com.spendsense.expense.dto.request.UpdateExpenseRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[108,43] cannot find symbol
+  symbol:   method getTransactionDate()
+  location: variable request of type com.spendsense.expense.dto.request.UpdateExpenseRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[109,41] cannot find symbol
+  symbol:   method getPaymentMethod()
+  location: variable request of type com.spendsense.expense.dto.request.UpdateExpenseRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[110,16] cannot find symbol
+  symbol:   method setCategory(com.spendsense.expense.entity.Category)
+  location: variable expense of type com.spendsense.expense.entity.Expense
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[125,16] cannot find symbol
+  symbol:   method setDeleted(boolean)
+  location: variable expense of type com.spendsense.expense.entity.Expense
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[126,16] cannot find symbol
+  symbol:   method setDeletedAt(java.time.LocalDateTime)
+  location: variable expense of type com.spendsense.expense.entity.Expense
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[172,31] cannot find symbol
+  symbol:   method builder()
+  location: class com.spendsense.expense.dto.response.ExpenseResponse
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[173,28] cannot find symbol
+  symbol:   method getId()
+  location: variable expense of type com.spendsense.expense.entity.Expense
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[174,31] cannot find symbol
+  symbol:   method getTitle()
+  location: variable expense of type com.spendsense.expense.entity.Expense
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[175,32] cannot find symbol
+  symbol:   method getAmount()
+  location: variable expense of type com.spendsense.expense.entity.Expense
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[176,34] cannot find symbol
+  symbol:   method getMerchant()
+  location: variable expense of type com.spendsense.expense.entity.Expense
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[177,31] cannot find symbol
+  symbol:   method getNotes()
+  location: variable expense of type com.spendsense.expense.entity.Expense
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[178,41] cannot find symbol
+  symbol:   method getTransactionDate()
+  location: variable expense of type com.spendsense.expense.entity.Expense
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[179,39] cannot find symbol
+  symbol:   method getPaymentMethod()
+  location: variable expense of type com.spendsense.expense.entity.Expense
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[180,34] cannot find symbol
+  symbol:   method getCategory()
+  location: variable expense of type com.spendsense.expense.entity.Expense
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[35,24] cannot find symbol
+  symbol:   method getKeyword()
+  location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[36,29] cannot find symbol
+  symbol:   method getKeyword()
+  location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[44,46] cannot find symbol
+  symbol:   method getKeyword()
+  location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[49,24] cannot find symbol
+  symbol:   method getCategoryId()
+  location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[57,40] cannot find symbol
+  symbol:   method getCategoryId()
+  location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[63,24] cannot find symbol
+  symbol:   method getPaymentMethod()
+  location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[71,40] cannot find symbol
+  symbol:   method getPaymentMethod()
+  location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[77,24] cannot find symbol
+  symbol:   method getMerchant()
+  location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[78,29] cannot find symbol
+  symbol:   method getMerchant()
+  location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[86,46] cannot find symbol
+  symbol:   method getMerchant()
+  location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[91,24] cannot find symbol
+  symbol:   method getFromDate()
+  location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[99,40] cannot find symbol
+  symbol:   method getFromDate()
+  location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[105,24] cannot find symbol
+  symbol:   method getToDate()
+  location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[113,40] cannot find symbol
+  symbol:   method getToDate()
+  location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[119,24] cannot find symbol
+  symbol:   method getMinAmount()
+  location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[127,40] cannot find symbol
+  symbol:   method getMinAmount()
+  location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[133,24] cannot find symbol
+  symbol:   method getMaxAmount()
+  location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[141,40] cannot find symbol
+  symbol:   method getMaxAmount()
+  location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/security/CustomUserDetails.java:[20,48] cannot find symbol
+  symbol:   method getRole()
+  location: variable user of type com.spendsense.user.entity.User
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/security/CustomUserDetails.java:[26,20] cannot find symbol
+  symbol:   method getPassword()
+  location: variable user of type com.spendsense.user.entity.User
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/security/CustomUserDetails.java:[31,20] cannot find symbol
+  symbol:   method getEmail()
+  location: variable user of type com.spendsense.user.entity.User
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/security/CustomUserDetails.java:[51,20] cannot find symbol
+  symbol:   method getEnabled()
+  location: variable user of type com.spendsense.user.entity.User
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/security/CustomUserDetailsService.java:[25,16] constructor CustomUserDetails in class com.spendsense.security.CustomUserDetails cannot be applied to given types;
+  required: no arguments
+  found:    com.spendsense.user.entity.User
+  reason: actual and formal argument lists differ in length
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/user/service/UserService.java:[20,45] cannot find symbol
+  symbol:   method getEmail()
+  location: variable request of type com.spendsense.user.dto.RegisterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/user/service/UserService.java:[24,25] cannot find symbol
+  symbol:   method builder()
+  location: class com.spendsense.user.entity.User
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/user/service/UserService.java:[25,34] cannot find symbol
+  symbol:   method getFullName()
+  location: variable request of type com.spendsense.user.dto.RegisterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/user/service/UserService.java:[26,31] cannot find symbol
+  symbol:   method getEmail()
+  location: variable request of type com.spendsense.user.dto.RegisterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/user/service/UserService.java:[27,57] cannot find symbol
+  symbol:   method getPassword()
+  location: variable request of type com.spendsense.user.dto.RegisterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/user/service/UserService.java:[32,32] cannot find symbol
+  symbol:   method builder()
+  location: class com.spendsense.user.dto.RegisterResponse
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/user/service/UserService.java:[33,30] cannot find symbol
+  symbol:   method getId()
+  location: variable savedUser of type com.spendsense.user.entity.User
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/user/service/UserService.java:[34,36] cannot find symbol
+  symbol:   method getFullName()
+  location: variable savedUser of type com.spendsense.user.entity.User
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/user/service/UserService.java:[35,33] cannot find symbol
+  symbol:   method getEmail()
+  location: variable savedUser of type com.spendsense.user.entity.User
+[INFO] 99 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.023 s
+[INFO] Finished at: 2026-07-10T06:40:09+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.14.0:compile (default-compile) on project spendsense-api: Compilation failure: Compilation failure: 
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/service/CategoryService.java:[7,42] cannot access com.spendsense.category.repository.CategoryRepository
+[ERROR]   bad source file: C:\Projects\SpendSense\backend\spendsense-api\src\main\java\com\spendsense\category\repository\CategoryRepository.java
+[ERROR]     file does not contain class com.spendsense.category.repository.CategoryRepository
+[ERROR]     Please remove or make sure it appears in the correct subdirectory of the sourcepath.
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/repository/CategoryRepository.java:[10,8] class CategoryResponse is public, should be declared in a file named CategoryResponse.java
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/user/repository/ExpenseRepository.java:[9,8] interface UserRepository is public, should be declared in a file named UserRepository.java
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/user/repository/UserRepository.java:[9,8] duplicate class: com.spendsense.user.repository.UserRepository
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/common/mapper/MapperConfig.java:[3,1] com.spendsense.common.mapper.MapperConfig is already defined in this compilation unit
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/controller/CategoryController.java:[3,43] package com.spendsense.category.dto.request does not exist
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/controller/CategoryController.java:[4,43] package com.spendsense.category.dto.request does not exist
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/service/CategoryService.java:[3,43] package com.spendsense.category.dto.request does not exist
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/service/CategoryService.java:[4,43] package com.spendsense.category.dto.request does not exist
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/controller/CategoryController.java:[25,33] cannot find symbol
+[ERROR]   symbol:   class CreateCategoryRequest
+[ERROR]   location: class com.spendsense.category.controller.CategoryController
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/controller/CategoryController.java:[48,33] cannot find symbol
+[ERROR]   symbol:   class UpdateCategoryRequest
+[ERROR]   location: class com.spendsense.category.controller.CategoryController
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/service/CategoryService.java:[20,19] cannot find symbol
+[ERROR]   symbol:   class CategoryRepository
+[ERROR]   location: class com.spendsense.category.service.CategoryService
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/service/CategoryService.java:[22,44] cannot find symbol
+[ERROR]   symbol:   class CreateCategoryRequest
+[ERROR]   location: class com.spendsense.category.service.CategoryService
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/service/CategoryService.java:[57,13] cannot find symbol
+[ERROR]   symbol:   class UpdateCategoryRequest
+[ERROR]   location: class com.spendsense.category.service.CategoryService
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/auth/service/AuthenticationService.java:[22,55] cannot find symbol
+[ERROR]   symbol:   method getEmail()
+[ERROR]   location: variable request of type com.spendsense.auth.dto.LoginRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/auth/service/AuthenticationService.java:[27,24] cannot find symbol
+[ERROR]   symbol:   method getPassword()
+[ERROR]   location: variable request of type com.spendsense.auth.dto.LoginRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/auth/service/AuthenticationService.java:[28,21] cannot find symbol
+[ERROR]   symbol:   method getPassword()
+[ERROR]   location: variable user of type com.spendsense.user.entity.User
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/auth/service/AuthenticationService.java:[33,53] cannot find symbol
+[ERROR]   symbol:   method getEmail()
+[ERROR]   location: variable user of type com.spendsense.user.entity.User
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/auth/service/AuthenticationService.java:[35,29] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.spendsense.auth.dto.LoginResponse
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/service/CategoryService.java:[28,37] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.spendsense.category.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/service/CategoryService.java:[66,17] cannot find symbol
+[ERROR]   symbol:   method setUpdatedAt(java.time.LocalDateTime)
+[ERROR]   location: variable category of type com.spendsense.category.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/service/CategoryService.java:[77,41] cannot find symbol
+[ERROR]   symbol:   method getIsDefault()
+[ERROR]   location: variable category of type com.spendsense.category.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/service/CategoryService.java:[86,32] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.spendsense.category.dto.response.CategoryResponse
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/service/CategoryService.java:[87,29] cannot find symbol
+[ERROR]   symbol:   method getId()
+[ERROR]   location: variable category of type com.spendsense.category.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/service/CategoryService.java:[88,31] cannot find symbol
+[ERROR]   symbol:   method getName()
+[ERROR]   location: variable category of type com.spendsense.category.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/service/CategoryService.java:[89,31] cannot find symbol
+[ERROR]   symbol:   method getIcon()
+[ERROR]   location: variable category of type com.spendsense.category.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/service/CategoryService.java:[90,32] cannot find symbol
+[ERROR]   symbol:   method getColor()
+[ERROR]   location: variable category of type com.spendsense.category.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/category/service/CategoryService.java:[91,36] cannot find symbol
+[ERROR]   symbol:   method getIsDefault()
+[ERROR]   location: variable category of type com.spendsense.category.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/common/exception/GlobalExceptionHandler.java:[21,34] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.spendsense.common.exception.ApiError
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/common/exception/GlobalExceptionHandler.java:[46,34] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.spendsense.common.exception.ApiError
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/config/DataInitializer.java:[26,25] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.spendsense.expense.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/config/DataInitializer.java:[28,25] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.spendsense.expense.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/config/DataInitializer.java:[30,25] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.spendsense.expense.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/config/DataInitializer.java:[32,25] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.spendsense.expense.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/config/DataInitializer.java:[34,25] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.spendsense.expense.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/config/DataInitializer.java:[36,25] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.spendsense.expense.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/config/DataInitializer.java:[38,25] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.spendsense.expense.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/config/DataInitializer.java:[40,25] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.spendsense.expense.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/config/DataInitializer.java:[42,25] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.spendsense.expense.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/config/DataInitializer.java:[44,25] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.spendsense.expense.entity.Category
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[39,64] cannot find symbol
+[ERROR]   symbol:   method getCategoryId()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.CreateExpenseRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[42,34] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.spendsense.expense.entity.Expense
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[43,31] cannot find symbol
+[ERROR]   symbol:   method getTitle()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.CreateExpenseRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[44,32] cannot find symbol
+[ERROR]   symbol:   method getAmount()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.CreateExpenseRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[45,34] cannot find symbol
+[ERROR]   symbol:   method getMerchant()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.CreateExpenseRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[46,31] cannot find symbol
+[ERROR]   symbol:   method getNotes()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.CreateExpenseRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[47,41] cannot find symbol
+[ERROR]   symbol:   method getTransactionDate()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.CreateExpenseRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[48,39] cannot find symbol
+[ERROR]   symbol:   method getPaymentMethod()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.CreateExpenseRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[101,64] cannot find symbol
+[ERROR]   symbol:   method getCategoryId()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.UpdateExpenseRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[104,33] cannot find symbol
+[ERROR]   symbol:   method getTitle()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.UpdateExpenseRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[105,34] cannot find symbol
+[ERROR]   symbol:   method getAmount()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.UpdateExpenseRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[106,36] cannot find symbol
+[ERROR]   symbol:   method getMerchant()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.UpdateExpenseRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[107,33] cannot find symbol
+[ERROR]   symbol:   method getNotes()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.UpdateExpenseRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[108,43] cannot find symbol
+[ERROR]   symbol:   method getTransactionDate()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.UpdateExpenseRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[109,41] cannot find symbol
+[ERROR]   symbol:   method getPaymentMethod()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.UpdateExpenseRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[110,16] cannot find symbol
+[ERROR]   symbol:   method setCategory(com.spendsense.expense.entity.Category)
+[ERROR]   location: variable expense of type com.spendsense.expense.entity.Expense
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[125,16] cannot find symbol
+[ERROR]   symbol:   method setDeleted(boolean)
+[ERROR]   location: variable expense of type com.spendsense.expense.entity.Expense
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[126,16] cannot find symbol
+[ERROR]   symbol:   method setDeletedAt(java.time.LocalDateTime)
+[ERROR]   location: variable expense of type com.spendsense.expense.entity.Expense
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[172,31] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.spendsense.expense.dto.response.ExpenseResponse
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[173,28] cannot find symbol
+[ERROR]   symbol:   method getId()
+[ERROR]   location: variable expense of type com.spendsense.expense.entity.Expense
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[174,31] cannot find symbol
+[ERROR]   symbol:   method getTitle()
+[ERROR]   location: variable expense of type com.spendsense.expense.entity.Expense
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[175,32] cannot find symbol
+[ERROR]   symbol:   method getAmount()
+[ERROR]   location: variable expense of type com.spendsense.expense.entity.Expense
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[176,34] cannot find symbol
+[ERROR]   symbol:   method getMerchant()
+[ERROR]   location: variable expense of type com.spendsense.expense.entity.Expense
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[177,31] cannot find symbol
+[ERROR]   symbol:   method getNotes()
+[ERROR]   location: variable expense of type com.spendsense.expense.entity.Expense
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[178,41] cannot find symbol
+[ERROR]   symbol:   method getTransactionDate()
+[ERROR]   location: variable expense of type com.spendsense.expense.entity.Expense
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[179,39] cannot find symbol
+[ERROR]   symbol:   method getPaymentMethod()
+[ERROR]   location: variable expense of type com.spendsense.expense.entity.Expense
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/service/ExpenseService.java:[180,34] cannot find symbol
+[ERROR]   symbol:   method getCategory()
+[ERROR]   location: variable expense of type com.spendsense.expense.entity.Expense
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[35,24] cannot find symbol
+[ERROR]   symbol:   method getKeyword()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[36,29] cannot find symbol
+[ERROR]   symbol:   method getKeyword()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[44,46] cannot find symbol
+[ERROR]   symbol:   method getKeyword()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[49,24] cannot find symbol
+[ERROR]   symbol:   method getCategoryId()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[57,40] cannot find symbol
+[ERROR]   symbol:   method getCategoryId()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[63,24] cannot find symbol
+[ERROR]   symbol:   method getPaymentMethod()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[71,40] cannot find symbol
+[ERROR]   symbol:   method getPaymentMethod()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[77,24] cannot find symbol
+[ERROR]   symbol:   method getMerchant()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[78,29] cannot find symbol
+[ERROR]   symbol:   method getMerchant()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[86,46] cannot find symbol
+[ERROR]   symbol:   method getMerchant()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[91,24] cannot find symbol
+[ERROR]   symbol:   method getFromDate()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[99,40] cannot find symbol
+[ERROR]   symbol:   method getFromDate()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[105,24] cannot find symbol
+[ERROR]   symbol:   method getToDate()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[113,40] cannot find symbol
+[ERROR]   symbol:   method getToDate()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[119,24] cannot find symbol
+[ERROR]   symbol:   method getMinAmount()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[127,40] cannot find symbol
+[ERROR]   symbol:   method getMinAmount()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[133,24] cannot find symbol
+[ERROR]   symbol:   method getMaxAmount()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/expense/specification/ExpenseSpecification.java:[141,40] cannot find symbol
+[ERROR]   symbol:   method getMaxAmount()
+[ERROR]   location: variable request of type com.spendsense.expense.dto.request.ExpenseFilterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/security/CustomUserDetails.java:[20,48] cannot find symbol
+[ERROR]   symbol:   method getRole()
+[ERROR]   location: variable user of type com.spendsense.user.entity.User
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/security/CustomUserDetails.java:[26,20] cannot find symbol
+[ERROR]   symbol:   method getPassword()
+[ERROR]   location: variable user of type com.spendsense.user.entity.User
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/security/CustomUserDetails.java:[31,20] cannot find symbol
+[ERROR]   symbol:   method getEmail()
+[ERROR]   location: variable user of type com.spendsense.user.entity.User
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/security/CustomUserDetails.java:[51,20] cannot find symbol
+[ERROR]   symbol:   method getEnabled()
+[ERROR]   location: variable user of type com.spendsense.user.entity.User
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/security/CustomUserDetailsService.java:[25,16] constructor CustomUserDetails in class com.spendsense.security.CustomUserDetails cannot be applied to given types;
+[ERROR]   required: no arguments
+[ERROR]   found:    com.spendsense.user.entity.User
+[ERROR]   reason: actual and formal argument lists differ in length
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/user/service/UserService.java:[20,45] cannot find symbol
+[ERROR]   symbol:   method getEmail()
+[ERROR]   location: variable request of type com.spendsense.user.dto.RegisterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/user/service/UserService.java:[24,25] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.spendsense.user.entity.User
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/user/service/UserService.java:[25,34] cannot find symbol
+[ERROR]   symbol:   method getFullName()
+[ERROR]   location: variable request of type com.spendsense.user.dto.RegisterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/user/service/UserService.java:[26,31] cannot find symbol
+[ERROR]   symbol:   method getEmail()
+[ERROR]   location: variable request of type com.spendsense.user.dto.RegisterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/user/service/UserService.java:[27,57] cannot find symbol
+[ERROR]   symbol:   method getPassword()
+[ERROR]   location: variable request of type com.spendsense.user.dto.RegisterRequest
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/user/service/UserService.java:[32,32] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.spendsense.user.dto.RegisterResponse
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/user/service/UserService.java:[33,30] cannot find symbol
+[ERROR]   symbol:   method getId()
+[ERROR]   location: variable savedUser of type com.spendsense.user.entity.User
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/user/service/UserService.java:[34,36] cannot find symbol
+[ERROR]   symbol:   method getFullName()
+[ERROR]   location: variable savedUser of type com.spendsense.user.entity.User
+[ERROR] /C:/Projects/SpendSense/backend/spendsense-api/src/main/java/com/spendsense/user/service/UserService.java:[35,33] cannot find symbol
+[ERROR]   symbol:   method getEmail()
+[ERROR]   location: variable savedUser of type com.spendsense.user.entity.User
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

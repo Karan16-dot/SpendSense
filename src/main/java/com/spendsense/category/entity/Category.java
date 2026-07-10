@@ -1,6 +1,7 @@
 package com.spendsense.category.entity;
 
 import com.spendsense.expense.entity.Expense;
+import com.spendsense.user.entity.User;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,6 +32,10 @@ public class Category {
     @Column(nullable = false, length = 20)
     private String color;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private CategoryType type;
+
     @Column(nullable = false)
     @Builder.Default
     private Boolean isDefault = false;
@@ -40,6 +45,10 @@ public class Category {
     private LocalDateTime createdAt = LocalDateTime.now();
 
     private LocalDateTime updatedAt;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @OneToMany(mappedBy = "category")
     @Builder.Default

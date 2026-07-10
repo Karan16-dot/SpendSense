@@ -29,7 +29,7 @@
     <dependencies>
 
         <!-- ========================= -->
-        <!-- Spring Boot Starters -->
+        <!-- Spring Boot -->
         <!-- ========================= -->
 
         <dependency>
@@ -53,7 +53,7 @@
         </dependency>
 
         <!-- ========================= -->
-        <!-- Database -->
+        <!-- PostgreSQL -->
         <!-- ========================= -->
 
         <dependency>
@@ -62,9 +62,18 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- ========================= -->
+        <!-- Flyway -->
+        <!-- ========================= -->
+
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-database-postgresql</artifactId>
         </dependency>
 
         <!-- ========================= -->
@@ -92,7 +101,7 @@
         </dependency>
 
         <!-- ========================= -->
-        <!-- Object Mapping -->
+        <!-- MapStruct -->
         <!-- ========================= -->
 
         <dependency>
@@ -102,7 +111,7 @@
         </dependency>
 
         <!-- ========================= -->
-        <!-- API Documentation -->
+        <!-- Swagger / OpenAPI -->
         <!-- ========================= -->
 
         <dependency>
@@ -137,6 +146,12 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -163,6 +178,12 @@
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
                             <version>1.18.38</version>
+                        </path>
+
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok-mapstruct-binding</artifactId>
+                            <version>0.2.0</version>
                         </path>
 
                         <path>
