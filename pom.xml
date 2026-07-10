@@ -24,6 +24,7 @@
         <java.version>21</java.version>
         <jjwt.version>0.12.7</jjwt.version>
         <mapstruct.version>1.6.3</mapstruct.version>
+        <lombok.version>1.18.46</lombok.version>
     </properties>
 
     <dependencies>
@@ -177,7 +178,7 @@
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
-                            <version>1.18.38</version>
+                            <version>${lombok.version}</version>
                         </path>
 
                         <path>

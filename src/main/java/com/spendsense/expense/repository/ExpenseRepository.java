@@ -82,4 +82,17 @@ public interface ExpenseRepository extends
             @Param("startDate") LocalDate startDate,
             @Param("endDate") LocalDate endDate
     );
+    @Query("""
+SELECT COALESCE(SUM(e.amount),0)
+FROM Expense e
+WHERE e.user = :user
+AND e.deleted = false
+AND e.transactionDate BETWEEN :startDate AND :endDate
+""")
+    BigDecimal calculateTotalExpense(
+            @Param("user") User user,
+            @Param("startDate") LocalDate startDate,
+            @Param("endDate") LocalDate endDate
+    );
+    long countByUserAndDeletedFalse(User user);
 }
