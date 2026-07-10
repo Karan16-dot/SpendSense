@@ -3,6 +3,7 @@ package com.spendsense.user.service;
 import com.spendsense.user.dto.RegisterRequest;
 import com.spendsense.user.dto.RegisterResponse;
 import com.spendsense.user.entity.User;
+import com.spendsense.user.mapper.UserMapper;
 import com.spendsense.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,6 +15,7 @@ public class UserService {
 
     private final UserRepository repository;
     private final PasswordEncoder passwordEncoder;
+    private final UserMapper userMapper;
 
     public RegisterResponse register(RegisterRequest request) {
 
@@ -21,19 +23,11 @@ public class UserService {
             throw new RuntimeException("Email already registered");
         }
 
-        User user = User.builder()
-                .fullName(request.getFullName())
-                .email(request.getEmail())
-                .password(passwordEncoder.encode(request.getPassword()))
-                .build();
+        User user = userMapper.toEntity(request);
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
 
         User savedUser = repository.save(user);
 
-        return RegisterResponse.builder()
-                .id(savedUser.getId())
-                .fullName(savedUser.getFullName())
-                .email(savedUser.getEmail())
-                .message("Registration Successful")
-                .build();
+        return userMapper.toResponse(savedUser);
     }
 }

@@ -4,10 +4,10 @@ import com.spendsense.category.dto.CreateCategoryRequest;
 import com.spendsense.category.dto.CategoryResponse;
 import com.spendsense.category.dto.UpdateCategoryRequest;
 import com.spendsense.category.entity.Category;
-import com.spendsense.common.mapper.MappingConfig;
+import com.spendsense.common.mapper.MapperConfig;
 import org.mapstruct.*;
 
-@Mapper(config = MappingConfig.class)
+@Mapper(config = MapperConfig.class)
 public interface CategoryMapper {
 
     Category toEntity(CreateCategoryRequest request);

@@ -8,6 +8,7 @@ import com.spendsense.expense.dto.response.ExpenseResponse;
 import com.spendsense.category.entity.Category;
 import com.spendsense.expense.entity.Expense;
 import com.spendsense.category.repository.CategoryRepository;
+import com.spendsense.expense.mapper.ExpenseMapper;
 import com.spendsense.expense.repository.ExpenseRepository;
 import com.spendsense.expense.specification.ExpenseSpecification;
 import com.spendsense.user.entity.User;
@@ -29,6 +30,7 @@ public class ExpenseService {
     private final ExpenseRepository expenseRepository;
     private final CategoryRepository categoryRepository;
     private final UserRepository userRepository;
+    private final ExpenseMapper expenseMapper;
 
     // ---------------- CREATE ----------------
 
@@ -39,18 +41,11 @@ public class ExpenseService {
         Category category = categoryRepository.findById(request.getCategoryId())
                 .orElseThrow(() -> new ResourceNotFoundException("Category not found"));
 
-        Expense expense = Expense.builder()
-                .title(request.getTitle())
-                .amount(request.getAmount())
-                .merchant(request.getMerchant())
-                .notes(request.getNotes())
-                .transactionDate(request.getTransactionDate())
-                .paymentMethod(request.getPaymentMethod())
-                .category(category)
-                .user(currentUser)
-                .build();
+        Expense expense = expenseMapper.toEntity(request);
+        expense.setCategory(category);
+        expense.setUser(currentUser);
 
-        return mapToResponse(expenseRepository.save(expense));
+        return expenseMapper.toResponse(expenseRepository.save(expense));
     }
 
     // ---------------- GET ALL ----------------
@@ -71,7 +66,7 @@ public class ExpenseService {
 
         return expenseRepository
                 .findByUserAndDeletedFalse(currentUser, pageable)
-                .map(this::mapToResponse);
+                .map(expenseMapper::toResponse);
     }
 
     // ---------------- GET BY ID ----------------
@@ -84,7 +79,7 @@ public class ExpenseService {
                 .findByIdAndUserAndDeletedFalse(expenseId, currentUser)
                 .orElseThrow(() -> new ResourceNotFoundException("Expense not found"));
 
-        return mapToResponse(expense);
+        return expenseMapper.toResponse(expense);
     }
 
     // ---------------- UPDATE ----------------
@@ -101,15 +96,10 @@ public class ExpenseService {
         Category category = categoryRepository.findById(request.getCategoryId())
                 .orElseThrow(() -> new ResourceNotFoundException("Category not found"));
 
-        expense.setTitle(request.getTitle());
-        expense.setAmount(request.getAmount());
-        expense.setMerchant(request.getMerchant());
-        expense.setNotes(request.getNotes());
-        expense.setTransactionDate(request.getTransactionDate());
-        expense.setPaymentMethod(request.getPaymentMethod());
+        expenseMapper.updateEntity(request, expense);
         expense.setCategory(category);
 
-        return mapToResponse(expenseRepository.save(expense));
+        return expenseMapper.toResponse(expenseRepository.save(expense));
     }
 
     // ---------------- DELETE ----------------
@@ -150,7 +140,7 @@ public class ExpenseService {
 
         return expenseRepository
                 .findAll(specification, pageable)
-                .map(this::mapToResponse);
+                .map(expenseMapper::toResponse);
     }
 
     // ---------------- CURRENT USER ----------------
@@ -163,21 +153,5 @@ public class ExpenseService {
         return userRepository.findByEmail(authentication.getName())
                 .orElseThrow(() ->
                         new ResourceNotFoundException("User not found"));
-    }
-
-    // ---------------- MAPPER ----------------
-
-    private ExpenseResponse mapToResponse(Expense expense) {
-
-        return ExpenseResponse.builder()
-                .id(expense.getId())
-                .title(expense.getTitle())
-                .amount(expense.getAmount())
-                .merchant(expense.getMerchant())
-                .notes(expense.getNotes())
-                .transactionDate(expense.getTransactionDate())
-                .paymentMethod(expense.getPaymentMethod())
-                .category(expense.getCategory().getName())
-                .build();
     }
 }

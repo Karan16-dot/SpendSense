@@ -4,6 +4,7 @@ import com.spendsense.category.dto.CreateCategoryRequest;
 import com.spendsense.category.dto.UpdateCategoryRequest;
 import com.spendsense.category.dto.CategoryResponse;
 import com.spendsense.category.entity.Category;
+import com.spendsense.category.mapper.CategoryMapper;
 import com.spendsense.category.repository.CategoryRepository;
 import com.spendsense.common.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,7 @@ import java.util.UUID;
 public class CategoryService {
 
     private final CategoryRepository categoryRepository;
+    private final CategoryMapper categoryMapper;
 
     public CategoryResponse createCategory(CreateCategoryRequest request) {
 
@@ -25,22 +27,16 @@ public class CategoryService {
             throw new RuntimeException("Category already exists");
         }
 
-        Category category = Category.builder()
-                .name(request.getName())
-                .icon(request.getIcon())
-                .color(request.getColor())
-                .type(request.getType())
-                .isDefault(false)
-                .build();
+        Category category = categoryMapper.toEntity(request);
 
-        return mapToResponse(categoryRepository.save(category));
+        return categoryMapper.toResponse(categoryRepository.save(category));
     }
 
     public List<CategoryResponse> getAllCategories() {
 
         return categoryRepository.findAll()
                 .stream()
-                .map(this::mapToResponse)
+                .map(categoryMapper::toResponse)
                 .toList();
     }
 
@@ -50,7 +46,7 @@ public class CategoryService {
                 .orElseThrow(() ->
                         new ResourceNotFoundException("Category not found"));
 
-        return mapToResponse(category);
+        return categoryMapper.toResponse(category);
     }
 
     public CategoryResponse updateCategory(
@@ -61,12 +57,10 @@ public class CategoryService {
                 .orElseThrow(() ->
                         new ResourceNotFoundException("Category not found"));
 
-        category.setName(request.getName());
-        category.setIcon(request.getIcon());
-        category.setColor(request.getColor());
+        categoryMapper.updateCategory(request, category);
         category.setUpdatedAt(LocalDateTime.now());
 
-        return mapToResponse(categoryRepository.save(category));
+        return categoryMapper.toResponse(categoryRepository.save(category));
     }
 
     public void deleteCategory(UUID id) {
@@ -80,17 +74,5 @@ public class CategoryService {
         }
 
         categoryRepository.delete(category);
-    }
-
-    private CategoryResponse mapToResponse(Category category) {
-
-        return CategoryResponse.builder()
-                .id(category.getId())
-                .name(category.getName())
-                .icon(category.getIcon())
-                .color(category.getColor())
-                .type(category.getType())
-                .isDefault(category.getIsDefault())
-                .build();
     }
 }

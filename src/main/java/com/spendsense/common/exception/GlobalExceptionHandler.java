@@ -1,64 +1,77 @@
 package com.spendsense.common.exception;
 
-import jakarta.servlet.http.HttpServletRequest;
+import com.spendsense.common.response.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
-import java.time.LocalDateTime;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<ApiError> handleResourceNotFound(
-
-            ResourceNotFoundException ex,
-
-            HttpServletRequest request) {
-
-        ApiError error = ApiError.builder()
-
-                .timestamp(LocalDateTime.now())
-
-                .status(HttpStatus.NOT_FOUND.value())
-
-                .error(ex.getMessage())
-
-                .path(request.getRequestURI())
-
-                .build();
+    public ResponseEntity<ApiResponse<Void>> handleNotFound(
+            ResourceNotFoundException ex) {
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
-
-                .body(error);
-
+                .body(ApiResponse.<Void>builder()
+                        .success(false)
+                        .message(ex.getMessage())
+                        .data(null)
+                        .build());
     }
 
-    @ExceptionHandler(DuplicateResourceException.class)
-    public ResponseEntity<ApiError> handleDuplicate(
-
-            DuplicateResourceException ex,
-
-            HttpServletRequest request) {
-
-        ApiError error = ApiError.builder()
-
-                .timestamp(LocalDateTime.now())
-
-                .status(HttpStatus.CONFLICT.value())
-
-                .error(ex.getMessage())
-
-                .path(request.getRequestURI())
-
-                .build();
+    @ExceptionHandler(ResourceAlreadyExistsException.class)
+    public ResponseEntity<ApiResponse<Void>> handleAlreadyExists(
+            ResourceAlreadyExistsException ex) {
 
         return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(ApiResponse.<Void>builder()
+                        .success(false)
+                        .message(ex.getMessage())
+                        .data(null)
+                        .build());
+    }
 
-                .body(error);
+    @ExceptionHandler(InvalidOperationException.class)
+    public ResponseEntity<ApiResponse<Void>> handleInvalidOperation(
+            InvalidOperationException ex) {
 
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(ApiResponse.<Void>builder()
+                        .success(false)
+                        .message(ex.getMessage())
+                        .data(null)
+                        .build());
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ApiResponse<Void>> handleValidation(
+            MethodArgumentNotValidException ex) {
+
+        String message = ex.getBindingResult()
+                .getFieldError()
+                .getDefaultMessage();
+
+        return ResponseEntity.badRequest()
+                .body(ApiResponse.<Void>builder()
+                        .success(false)
+                        .message(message)
+                        .data(null)
+                        .build());
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ApiResponse<Void>> handleGeneral(
+            Exception ex) {
+
+        return ResponseEntity.internalServerError()
+                .body(ApiResponse.<Void>builder()
+                        .success(false)
+                        .message(ex.getMessage())
+                        .data(null)
+                        .build());
     }
 
 }
